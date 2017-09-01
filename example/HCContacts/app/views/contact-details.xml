@@ -1,23 +1,25 @@
-<Page>
+<Page loaded="loaded" >
     <Page.actionBar>
-        <ActionBar title="Details" />
+        <ActionBar title="Details">
+            <ActionItem tap="back" android.systemIcon="ic_menu_close_clear_cancel" />
+        </ActionBar>
     </Page.actionBar>
     <GridLayout horizontalAlignment="center" rows="auto,auto,auto,auto,auto,auto,auto" columns="auto,*">
         <Label text="Name" row="0"/>
-        <TextField hint="Nachname" row="0" col="1"/>
+        <TextField hint="Nachname"  text="{{ displayContact.name.family }}" isEnabled="{{ editable }}" row="0" col="1"/>
         <Label text="Vorname" row="1"/>
-        <TextField hint="Vorname" row="1" col="1"/>
+        <TextField hint="Vorname" text="{{ displayContact.name.given }}" isEnabled="{{ editable }}" row="1" col="1"/>
         <Label text="Straße" row="2" />
-        <TextField hint="Strasse/Hausnummer" row="2" col="1"/>
+        <TextField hint="Strasse/Hausnummer" text="{{ displayContact.postalAddresses[0].location.street }}" isEnabled="{{ editable }}" row="2" col="1"/>
         <Label text="PLZ" row="3"/>
-        <TextField hint="Postleitzahl" row="3" col="1"/>
+        <TextField hint="Postleitzahl" text="{{ displayContact.postalAddresses[0].location.postalCode }}" isEnabled="{{ editable }}" row="3" col="1"/>
         <Label text="Ort" row="4"/>
-        <TextField hint="Wohnort" row="4" col="1"/>
+        <TextField hint="Wohnort" text="{{ displayContact.postalAddresses[0].location.city }}" isEnabled="{{ editable }}" row="4" col="1"/>
         <Label text="Telefon" row="5"/>
-        <TextField hint="Vorwahl/Rufummer" row="5" col="1"/>
+        <TextField hint="Vorwahl/Rufummer" text="{{ displayContact.phoneNumbers[0].value }}" isEnabled="{{ editable }}" row="5" col="1"/>
         <StackLayout orientation="vertical" horizontalAlignment="center" row="6" colSpan="2">
             <Button text="Abbrechen" tap="back" />
-            <Button text="Speichern" tap="back" />
+            <Button text="Speichern" isEnabled="{{ editable }}" tap="back" />
         </StackLayout>
     </GridLayout>
 </Page> 

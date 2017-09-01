@@ -1,10 +1,14 @@
-<Page>
+<Page loaded="fetchContacts" >
     <Page.actionBar>
         <ActionBar title="Alle Kontakte" />
     </Page.actionBar>
     <StackLayout orientation="vertical" horizontalAlignment="center" >
-        <Label text="Hugo Bauer" />
-        <Label text="Fritz Müller" />
+        <ListView items="{{ allContacts }}" itemTap="contactSelected">
+            <ListView.itemTemplate>
+                <Label text="{{ name.given + ' ' + name.family}}" textWrap="true" class="title" />
+            </ListView.itemTemplate>
+        </ListView>
         <Button text="Neuer Kontakt" tap="addContact"/>
+        <Button text="Aktualisieren" tap="fetchContacts"/>
     </StackLayout>
 </Page>
