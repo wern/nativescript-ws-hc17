@@ -1,26 +1,34 @@
-<Page loaded="loaded" >
+<!-- tns plugin add nativescript-telerik-ui -->
+<Page loaded="loaded" xmlns:nsDrawer="nativescript-telerik-ui/sidedrawer" xmlns:myComp="shared">
     <Page.actionBar>
         <ActionBar title="Details">
             <ActionItem visibility="{{ editable ? 'visible' : 'collapse' }}" tap="save" ios.systemIcon="3" android.systemIcon="ic_menu_save" ios.position="right" />
             <ActionItem tap="back" android.systemIcon="ic_menu_close_clear_cancel" />
         </ActionBar>
     </Page.actionBar>
-    <GridLayout horizontalAlignment="center" rows="auto,auto,auto,auto,auto,auto,auto" columns="auto,*">
-        <Label text="Name" row="0"/>
-        <TextField hint="Nachname"  text="{{ displayContact.name.family }}" isEnabled="{{ editable }}" row="0" col="1"/>
-        <Label text="Vorname" row="1"/>
-        <TextField hint="Vorname" text="{{ displayContact.name.given }}" isEnabled="{{ editable }}" row="1" col="1"/>
-        <Label text="Straße" row="2" />
-        <TextField hint="Strasse/Hausnummer" text="{{ displayContact.postalAddresses[0].location.street }}" isEnabled="{{ editable }}" row="2" col="1"/>
-        <Label text="PLZ" row="3"/>
-        <TextField hint="Postleitzahl" text="{{ displayContact.postalAddresses[0].location.postalCode }}" isEnabled="{{ editable }}" row="3" col="1"/>
-        <Label text="Ort" row="4"/>
-        <TextField hint="Wohnort" text="{{ displayContact.postalAddresses[0].location.city }}" isEnabled="{{ editable }}" row="4" col="1"/>
-        <Label text="Telefon" row="5"/>
-        <TextField hint="Vorwahl/Rufummer" text="{{ displayContact.phoneNumbers[0].value }}" isEnabled="{{ editable }}" row="5" col="1"/>
-        <StackLayout orientation="vertical" horizontalAlignment="center" row="6" colSpan="2">
-            <Button text="Abbrechen" tap="back" />
-            <Button text="Speichern" isEnabled="{{ editable }}" tap="save" />
-        </StackLayout>
-    </GridLayout>
+    <nsDrawer:RadSideDrawer id="sideDrawer">
+        <nsDrawer:RadSideDrawer.drawerContent>
+            <myComp:sideDrawer />
+        </nsDrawer:RadSideDrawer.drawerContent>
+        <nsDrawer:RadSideDrawer.mainContent>
+            <GridLayout horizontalAlignment="center" rows="auto,auto,auto,auto,auto,auto,auto" columns="auto,*">
+                <Label text="Name" row="0"/>
+                <TextField hint="Nachname"  text="{{ displayContact.name.family }}" isEnabled="{{ editable }}" row="0" col="1"/>
+                <Label text="Vorname" row="1"/>
+                <TextField hint="Vorname" text="{{ displayContact.name.given }}" isEnabled="{{ editable }}" row="1" col="1"/>
+                <Label text="Straße" row="2" />
+                <TextField hint="Strasse/Hausnummer" text="{{ displayContact.postalAddresses[0].location.street }}" isEnabled="{{ editable }}" row="2" col="1"/>
+                <Label text="PLZ" row="3"/>
+                <TextField hint="Postleitzahl" text="{{ displayContact.postalAddresses[0].location.postalCode }}" isEnabled="{{ editable }}" row="3" col="1"/>
+                <Label text="Ort" row="4"/>
+                <TextField hint="Wohnort" text="{{ displayContact.postalAddresses[0].location.city }}" isEnabled="{{ editable }}" row="4" col="1"/>
+                <Label text="Telefon" row="5"/>
+                <TextField hint="Vorwahl/Rufummer" text="{{ displayContact.phoneNumbers[0].value }}" isEnabled="{{ editable }}" row="5" col="1"/>
+                <StackLayout orientation="vertical" horizontalAlignment="center" row="6" colSpan="2">
+                    <Button text="Abbrechen" tap="back" />
+                    <Button text="Speichern" isEnabled="{{ editable }}" tap="save" />
+                </StackLayout>
+            </GridLayout>
+        </nsDrawer:RadSideDrawer.mainContent>
+    </nsDrawer:RadSideDrawer>
 </Page> 

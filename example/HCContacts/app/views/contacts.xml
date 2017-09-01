@@ -1,14 +1,23 @@
-<Page loaded="fetchContacts" >
+<!-- tns plugin add nativescript-telerik-ui -->
+<Page loaded="fetchContacts" xmlns:nsDrawer="nativescript-telerik-ui/sidedrawer" xmlns:myComp="shared">
     <Page.actionBar>
         <ActionBar title="Alle Kontakte" />
     </Page.actionBar>
-    <StackLayout orientation="vertical" horizontalAlignment="center" >
-        <ListView items="{{ allContacts }}" itemTap="contactSelected">
-            <ListView.itemTemplate>
-                <Label text="{{ name.given + ' ' + name.family}}" textWrap="true" class="title" />
-            </ListView.itemTemplate>
-        </ListView>
-        <Button text="Neuer Kontakt" tap="addContact"/>
-        <Button text="Aktualisieren" tap="fetchContacts"/>
-    </StackLayout>
+    <nsDrawer:RadSideDrawer id="sideDrawer">
+        <nsDrawer:RadSideDrawer.drawerContent>
+            <myComp:sideDrawer />
+        </nsDrawer:RadSideDrawer.drawerContent>
+        <nsDrawer:RadSideDrawer.mainContent>
+            <StackLayout orientation="vertical" horizontalAlignment="center" >
+                <ListView items="{{ allContacts }}" itemTap="contactSelected">
+                    <ListView.itemTemplate>
+                        <Label text="{{ name.given + ' ' + name.family}}" textWrap="true" class="title" />
+                    </ListView.itemTemplate>
+                </ListView>
+                <Button text="Neuer Kontakt" tap="addContact"/>
+                <Button text="Aktualisieren" tap="fetchContacts"/>
+                <Button text="Einstellungen" tap="showSideDrawer"/>
+            </StackLayout>
+        </nsDrawer:RadSideDrawer.mainContent>
+    </nsDrawer:RadSideDrawer>
 </Page>

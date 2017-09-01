@@ -1,0 +1,9 @@
+<StackLayout backgroundColor="lightgray" orientation="vertical" horizontalAlignment="left" xmlns:myComp="shared">
+    <Label text="Hallo compDrawer!!!" />
+    <myComp:loremIpsum />
+    <StackLayout orientation="vertical" horizontalAlignment="center" >
+        <Button text="Alle Kontakte" tap="openContacts"/>
+        <Button text="Details" tap="openContactDetails"/>
+        <Button text="Schliessen" tap="closeDrawer"/>
+    </StackLayout>
+</StackLayout>

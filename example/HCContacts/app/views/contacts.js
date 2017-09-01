@@ -3,6 +3,7 @@ var Observable = require("data/observable").Observable;
 var fromObject = require("data/observable").fromObject;
 var requestPermission = require("~/util/permissions").requestPermission; // tns plugin add nativescript-permissions
 var contacts = require( "nativescript-contacts" ); // tns plugin add nativescript-contacts
+var openDrawer = require("~/shared/sideDrawer.js").openDrawer;
 
 var localContacts = new Observable();
 
@@ -48,6 +49,11 @@ function addContact() {
     topmost.navigate("views/contact-details");
 };
 
+function showSideDrawer() {
+    openDrawer();
+};
+
 exports.addContact = addContact;
 exports.contactSelected = contactSelected;
 exports.fetchContacts = fetchContacts;
+exports.showSideDrawer = showSideDrawer;
