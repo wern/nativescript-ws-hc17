@@ -1,6 +1,7 @@
 <Page loaded="loaded" >
     <Page.actionBar>
         <ActionBar title="Details">
+            <ActionItem visibility="{{ editable ? 'visible' : 'collapse' }}" tap="save" ios.systemIcon="3" android.systemIcon="ic_menu_save" ios.position="right" />
             <ActionItem tap="back" android.systemIcon="ic_menu_close_clear_cancel" />
         </ActionBar>
     </Page.actionBar>
@@ -19,7 +20,7 @@
         <TextField hint="Vorwahl/Rufummer" text="{{ displayContact.phoneNumbers[0].value }}" isEnabled="{{ editable }}" row="5" col="1"/>
         <StackLayout orientation="vertical" horizontalAlignment="center" row="6" colSpan="2">
             <Button text="Abbrechen" tap="back" />
-            <Button text="Speichern" isEnabled="{{ editable }}" tap="back" />
+            <Button text="Speichern" isEnabled="{{ editable }}" tap="save" />
         </StackLayout>
     </GridLayout>
 </Page> 

@@ -1,4 +1,8 @@
 var frameModule = require("ui/frame");
+var Observable = require("data/observable").Observable; 
+var contacts = require( "nativescript-contacts" );
+var requestPermission = require("~/util/permissions").requestPermission;
+
 var localContacts = null;
 
 function back() {
@@ -14,11 +18,32 @@ function loaded(args) {
         var selectedIndex = localContacts.selectionIndex;
         localContacts.set("displayContact", localContacts.allContacts[selectedIndex]);
         localContacts.set("editable", false);
-        page.bindingContext = localContacts;
     }else{
-       // Kommt mit Step-3 :)
+        localContacts = new Observable();
+        localContacts.set("displayContact", new contacts.Contact());
+        localContacts.set("editable", true);
     }
+
+    // Damit ist auf jeden Fall mindestens ein Eintrag in den Listen ,)
+    localContacts.get("displayContact").postalAddresses.push({location:{street:"",city:"",postalCode:""}});
+    localContacts.get("displayContact").phoneNumbers.push({value:""});
+    page.bindingContext = localContacts;
+};
+
+function save() {
+
+    requestPermission("android.permission.WRITE_CONTACTS");
+    requestPermission("android.permission.GET_ACCOUNTS");
+    // Wir muessen kopieren, da displayContact evtl. kein gueltiges Contact Objekt ist!
+    var newContact = new contacts.Contact();
+    newContact.name.given = localContacts.get("displayContact").name.given;
+    newContact.name.family = localContacts.get("displayContact").name.family;
+    newContact.postalAddresses.push(localContacts.get("displayContact").postalAddresses[0]); 
+    newContact.phoneNumbers.push(localContacts.get("displayContact").phoneNumbers[0]); 
+    newContact.save();
+    exports.back();
 };
 
 exports.back = back;
 exports.loaded = loaded;
+exports.save = save;
