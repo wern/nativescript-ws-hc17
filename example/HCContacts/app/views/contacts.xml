@@ -1,0 +1,10 @@
+<Page>
+    <Page.actionBar>
+        <ActionBar title="Alle Kontakte" />
+    </Page.actionBar>
+    <StackLayout orientation="vertical" horizontalAlignment="center" >
+        <Label text="Hugo Bauer" />
+        <Label text="Fritz Müller" />
+        <Button text="Neuer Kontakt" tap="addContact"/>
+    </StackLayout>
+</Page>

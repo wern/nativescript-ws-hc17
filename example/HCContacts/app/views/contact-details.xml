@@ -1,0 +1,23 @@
+<Page>
+    <Page.actionBar>
+        <ActionBar title="Details" />
+    </Page.actionBar>
+    <GridLayout horizontalAlignment="center" rows="auto,auto,auto,auto,auto,auto,auto" columns="auto,*">
+        <Label text="Name" row="0"/>
+        <TextField hint="Nachname" row="0" col="1"/>
+        <Label text="Vorname" row="1"/>
+        <TextField hint="Vorname" row="1" col="1"/>
+        <Label text="Straße" row="2" />
+        <TextField hint="Strasse/Hausnummer" row="2" col="1"/>
+        <Label text="PLZ" row="3"/>
+        <TextField hint="Postleitzahl" row="3" col="1"/>
+        <Label text="Ort" row="4"/>
+        <TextField hint="Wohnort" row="4" col="1"/>
+        <Label text="Telefon" row="5"/>
+        <TextField hint="Vorwahl/Rufummer" row="5" col="1"/>
+        <StackLayout orientation="vertical" horizontalAlignment="center" row="6" colSpan="2">
+            <Button text="Abbrechen" tap="back" />
+            <Button text="Speichern" tap="back" />
+        </StackLayout>
+    </GridLayout>
+</Page> 
